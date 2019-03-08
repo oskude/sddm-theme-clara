@@ -1,0 +1,12 @@
+[SddmGreeterTheme]
+Name=Clara
+Description=Very basic login
+Author=Andre "Osku" Schmidt
+Type=sddm-theme
+Version=0.1.0
+Website=https://github.com/oskude/sddm-theme-clara
+Screenshot=screenshot.png
+MainScript=main.qml
+ConfigFile=theme.conf
+Theme-Id=clara
+Theme-API=2.0
