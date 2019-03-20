@@ -30,7 +30,7 @@ PlasmaCore.ColorScope {
 				id: openDalineAnim
 				from: 0
 				to: root.width / 3
-				duration: 400
+				duration: config.animation_duration
 				onStopped: {
 					username.forceActiveFocus()
 				}
@@ -39,7 +39,7 @@ PlasmaCore.ColorScope {
 				id: closeDalineAnim
 				from: root.width / 3
 				to: 0
-				duration: 400
+				duration: config.animation_duration
 				running: false
 				onStopped: {
 					sddm.login(username.text, password.text, 0)
