@@ -8,6 +8,8 @@ Item {
 		onLoginFailed: {
 			username.clear()
 			password.clear()
+			username.opacity = 1
+			password.opacity = 1
 			dalineAnimOpen.restart()
 		}
 		onLoginSucceeded: {
@@ -42,7 +44,8 @@ Item {
 				duration: config.animation_duration
 				running: false
 				onStopped: {
-					sddm.login(username.text, password.text, 0)
+					usernameAnimClose.restart()
+					passwordAnimClose.restart()
 				}
 			}
 		}
@@ -56,6 +59,17 @@ Item {
 			anchors.horizontalCenter: parent.horizontalCenter
 			anchors.bottom: daline.top
 			onAccepted: password.forceActiveFocus()
+			NumberAnimation on opacity {
+				id: usernameAnimClose
+				from: 1.0
+				to: 0
+				duration: config.animation_duration / 2
+				running: false
+				onStopped: {
+					sddm.login(username.text, password.text, 0)
+				}
+			}
+
 		}
 
 		TextInput {
@@ -70,6 +84,13 @@ Item {
 			onAccepted: {
 				this.focus = false
 				dalineAnimClose.restart()
+			}
+			NumberAnimation on opacity {
+				id: passwordAnimClose
+				from: 1.0
+				to: 0
+				duration: config.animation_duration / 2
+				running: false
 			}
 		}
 	}
