@@ -11,7 +11,7 @@ PlasmaCore.ColorScope {
 		onLoginFailed: {
 			username.clear()
 			password.clear()
-			openDalineAnim.restart()
+			dalineAnimOpen.restart()
 		}
 		onLoginSucceeded: {
 			// no time to do anything interesting...
@@ -19,15 +19,15 @@ PlasmaCore.ColorScope {
 	}
 
 	Rectangle {
-		color: config.background
+		color: config.background_color
 		anchors.fill: parent
 		Rectangle {
 			id: daline
-			color: config.foreground
+			color: config.foreground_color
 			anchors.centerIn: parent
 			height: root.height / 96
 			NumberAnimation on width {
-				id: openDalineAnim
+				id: dalineAnimOpen
 				from: 0
 				to: root.width / 3
 				duration: config.animation_duration
@@ -36,7 +36,7 @@ PlasmaCore.ColorScope {
 				}
 			}
 			NumberAnimation on width {
-				id: closeDalineAnim
+				id: dalineAnimClose
 				from: root.width / 3
 				to: 0
 				duration: config.animation_duration
@@ -48,7 +48,7 @@ PlasmaCore.ColorScope {
 		}
 		TextInput {
 			id: username
-			color: config.foreground
+			color: config.foreground_color
 			font.pixelSize: root.height / 20
 			horizontalAlignment: TextInput.AlignHCenter
 			width: root.width
@@ -59,7 +59,7 @@ PlasmaCore.ColorScope {
 		TextInput {
 			id: password
 			echoMode: TextInput.Password
-			color: config.foreground
+			color: config.foreground_color
 			font.pixelSize: root.height / 20
 			horizontalAlignment: TextInput.AlignHCenter
 			width: root.width
@@ -67,7 +67,7 @@ PlasmaCore.ColorScope {
 			anchors.top: daline.bottom
 			onAccepted: {
 				this.focus = false
-				closeDalineAnim.restart()
+				dalineAnimClose.restart()
 			}
 		}
 	}
