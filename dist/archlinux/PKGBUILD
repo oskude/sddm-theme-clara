@@ -1,14 +1,14 @@
 pkgname='sddm-theme-clara'
 pkgver='0.1.1'
-pkgrel=1
+pkgrel=2
 arch=('any')
 
 package() {
 	s=$startdir/../../src
 	t=$pkgdir/usr/share/sddm/themes/clara
 	install -Dm 644 $s/main.qml $t/main.qml
+	install -Dm 644 $s/view.qml $t/view.qml
 	install -Dm 644 $s/metadata.desktop $t/metadata.desktop
 	install -Dm 644 $s/theme.conf $t/theme.conf
 	install -Dm 644 $s/screenshot.png $t/screenshot.png
-	ls -lah
 }
