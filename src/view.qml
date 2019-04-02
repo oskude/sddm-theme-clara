@@ -1,6 +1,12 @@
 import QtQuick 2.5
 
 Item {
+	id: root
+	property int maxSize: parent.maxSize
+	property int fontSize: this.maxSize / 20
+	property int dalineHeight: this.maxSize / 96
+	property int dalineWidth: this.maxSize / 3
+
 	anchors.fill: parent
 
 	Connections {
@@ -25,12 +31,12 @@ Item {
 			id: daline
 			color: config.foreground_color
 			anchors.centerIn: parent
-			height: parent.height / 96
+			height: root.dalineHeight
 
 			NumberAnimation on width {
 				id: dalineAnimOpen
 				from: 0
-				to: parent.width / 3
+				to: root.dalineWidth
 				duration: config.animation_duration
 				onStopped: {
 					username.forceActiveFocus()
@@ -39,7 +45,7 @@ Item {
 
 			NumberAnimation on width {
 				id: dalineAnimClose
-				from: parent.width / 3
+				from: root.dalineWidth
 				to: 0
 				duration: config.animation_duration
 				running: false
@@ -53,7 +59,7 @@ Item {
 		TextInput {
 			id: username
 			color: config.foreground_color
-			font.pixelSize: parent.height / 20
+			font.pixelSize: root.fontSize
 			horizontalAlignment: TextInput.AlignHCenter
 			width: parent.width
 			anchors.horizontalCenter: parent.horizontalCenter
@@ -76,7 +82,7 @@ Item {
 			id: password
 			echoMode: TextInput.Password
 			color: config.foreground_color
-			font.pixelSize: parent.height / 20
+			font.pixelSize: root.fontSize
 			horizontalAlignment: TextInput.AlignHCenter
 			width: parent.width
 			anchors.horizontalCenter: parent.horizontalCenter

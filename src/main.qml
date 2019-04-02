@@ -6,8 +6,10 @@ PlasmaCore.ColorScope {
 	height: 480
 
 	Loader {
+		property int maxSize: 42
 		anchors.fill: parent
 		onWidthChanged: {
+			this.maxSize = this.width < this.height ? this.width : this.height
 			this.source = ""; // TODO: do we really need this to force reload?
 			this.source = "view.qml"
 		}
